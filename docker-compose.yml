@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "6060:8080"
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["go", "test", "-v", "github.com/ezhdanovskiy/docker-go-experiments"]
