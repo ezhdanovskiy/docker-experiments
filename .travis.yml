@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t zhdanovskiy/docker-go-experiments -f Dockerfile.dev .
+
+script:
+  - docker run zhdanovskiy/docker-go-experiments go test -v github.com/ezhdanovskiy/docker-go-experiments
