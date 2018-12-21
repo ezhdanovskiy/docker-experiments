@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run zhdanovskiy/docker-go-experiments go test -v github.com/ezhdanovskiy/docker-go-experiments
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-go"
+  env: "DockerGo-env"
+  bucket_name: "elasticbeanstalk-us-east-1-114096054274"
+  bucket_path: "docker-go"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
